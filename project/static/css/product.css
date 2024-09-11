@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.image-section {
+    flex: 1;
+    text-align: center;
+}
+
+.summary-section {
+    flex: 1;
+    padding: 20px;
+    align-self: flex-start;
+}
+
+.features {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.summary-section {
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    border-left: 1px solid #ddd;
+}
+
+.summary-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.summary-table td {
+    padding: 8px 0;
+}
+
+.summary-table td:first-child {
+    font-weight: bold;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.buy-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.buy-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Back Button Styles */
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #f8f9fa;
+    color: #007bff;
+    padding: 10px 15px;
+    border: 1px solid #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #e2e6ea;
+}
+
+/* Bottom Section with Description and Features split */
+.bottom-section {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.description-section,
+.features-section {
+    width: 50%;
+    padding: 20px;
+}
+
+/* Vertical Line Separator */
+.separator {
+    width: 1px;
+    background-color: #ccc;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .bottom-section {
+        flex-direction: column;
+        position: relative;
+    }
+
+    .description-section,
+    .features-section {
+        width: 100%;
+    }
+
+    .separator {
+        display: none;
+    }
+
+    .back-btn {
+        top: 5px;
+        left: 5px;
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Product Page</title>
+    <link rel="stylesheet" href="{% static 'css/product.css' %}">
+</head>
+<body>
+
+    <!-- Back Button -->
+    <a href="javascript:history.back()" class="back-btn">Back</a>
+
+    <div class="container">
+        <!-- Image Section -->
+        <div class="image-section">
+            <img src="{{ product.image.url }}" alt="Product Image" width="300px">
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section">
+            <h3>Summary</h3>
+            <table class="summary-table">
+                <tr>
+                    <td>Original Price:</td>
+                    <td>{{ product.original_price }}</td>
+                </tr>
+                <tr>
+                    <td>Discount:</td>
+                    <td>{{ product.discount }}</td>
+                </tr>
+                <tr>
+                    <td>Current Price:</td>
+                    <td>{{ product.current_price }}</td>
+                </tr>
+            </table>
+
+            <div class="price">Price: Rs.{{ product.price }}</div>
+
+            <button class="buy-btn">Buy</button>
+        </div>
+    </div>
+
+    <!-- Bottom Section with Description and Features -->
+    <div class="bottom-section">
+        <!-- Description Section -->
+        <div class="description-section">
+            <h2>Description</h2>
+            <p>{{ product.description }}</p>
+        </div>
+
+        <!-- Vertical Line Separator -->
+        <div class="separator"></div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2>Features</h2>
+            <ul>
+                {% for feature in product.features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

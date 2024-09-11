@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Your Dashboard</h1>
+    <h2>Your Enrollments</h2>
+    <ul>
+        {% for enrollment in enrollments %}
+        <li>
+            Course: {{ enrollment.course.name }}<br>
+            Enrollment Date: {{ enrollment.enrollment_date }}<br>
+            Payment Status: {{ enrollment.payment_status }}<br>
+            Amount Paid: ${{ enrollment.amount_paid }}<br>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

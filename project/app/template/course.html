@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Enroll in {{ course.name }}
+{% endblock %}
+{% block content %}
+<h2>Enroll in {{ course.name }}</h2>
+
+<div class="course-detail">
+    <img src="{{ course.image.url }}" alt="{{ course.name }}" class="course-image">
+    <p>{{ course.desc }}</p>
+    <p>Price: ${{ course.price }}</p>
+    
+    <!-- Simulated Payment Form -->
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="enroll-button">Pay & Enroll Now</button>
+    </form>
+</div>
+{% endblock %}
