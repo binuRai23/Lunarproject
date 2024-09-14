@@ -11,7 +11,7 @@
 
     <!-- Back Button -->
     <a href="javascript:history.back()" class="back-btn">Back</a>
-
+   
     <div class="container">
         <!-- Image Section -->
         <div class="image-section">
@@ -35,13 +35,11 @@
                     <td>{{ product.current_price }}</td>
                 </tr>
             </table>
-
             <div class="price">Price: Rs.{{ product.price }}</div>
-
-            <button class="buy-btn">Buy</button>
+            <button class="card-btn" aria-label="Show More" onclick="window.location.href='{% url 'payment' %}'">Buy
         </div>
     </div>
-
+    </form>
     <!-- Bottom Section with Description and Features -->
     <div class="bottom-section">
         <!-- Description Section -->
@@ -63,6 +61,5 @@
             </ul>
         </div>
     </div>
-
 </body>
 </html>

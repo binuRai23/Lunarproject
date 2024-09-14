@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <title>Payment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy product</title>
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
 </head>
 <body>
-    <h1>Payment for {{ enrollment.course.name }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Complete Payment</button>
-    </form>
+    <!-- Back Button -->
+    <div class="back-button">
+        <button onclick="window.history.back()">Back to Home</button>
+    </div>
+    
+    <!-- Enrollment Form -->
+    <div class="enrollment-form">
+        <h2>Course Enrollment Form</h2>
+        <form id="paymentform" method="post" action="{%url 'initiate' %}">
+            {% csrf_token %}
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" name="contact" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <input type="hidden" name="purchase_order_id" value="{{ uid }}"> 
+            <input type="hidden" name="return_url" value="http://127.0.0.1:8000/verify">
+            
+            <label for="product">Product:</label>
+            <select id="product" name="product" onchange="updatePrice()" required>
+                <option value="">Select a product</option>
+                {% for Product in products %}
+                <option value="{{ Product.id }}" data-price="{{ Product.price }}">{{ Product.name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="price">Price:</label>
+            <input type="text" id="Amount" name="Amount" readonly>
+
+            <button type="submit">pay with Khalti</button>
+        </form>
+    </div>
+
+    <script>
+        function updatePrice() {
+            const courseSelect = document.getElementById('product');
+            const selectedOption = courseSelect.options[courseSelect.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            document.getElementById('Amount').value = price ? (price*100) : '';
+        }
+    </script>
+    
 </body>
 </html>
